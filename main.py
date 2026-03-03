@@ -1,4 +1,15 @@
 import argparse
+files = []
+def line():
+    with open("v-track/tracker.txt", 'r') as f:
+        return sum(1 for line in f)
+def start():
+    while True:
+            with open("v-track/tracker.txt", 'r') as f:     
+                 for line in f:
+                      files.append(line.strip())
+            print(files)          
+         
 def run(name):
     if name == "init":
         import subprocess
@@ -41,3 +52,4 @@ arg = argparse.ArgumentParser(description="git like program")
 arg.add_argument("action", help="do something")
 args = arg.parse_args()
 run(args.action)
+start()
