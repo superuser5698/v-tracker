@@ -1,16 +1,16 @@
 import argparse
 from time import sleep
-import subprocess
+from os import makedirs
 files = []
-def line():
-    with open("v-track/tracker.txt", 'r') as f:
-        return sum(1 for line in f)
+def folder(folder):
+    makedirs(f"c:/Users/Ayaansh_Joshi/Desktop/v-tracker-latest/v-track/{folder}")
 def start():
+    global files
+    fik_num = 0
     while True:
             with open("v-track/tracker.txt", 'r') as f:     
                  for line in f:
                       files.append(line.strip())
-                      subprocess([f"mkdir", "v-track/{line.strip()}"],shell=True)
                       
             print(files)          
             sleep(1)
@@ -34,6 +34,7 @@ def run(name):
           #      exit(0)
             f.write(file)
             f.write("\n")
+        folder(file)
     elif name == "read":
         with open("v-track/tracker.txt", mode="r") as f:
             print(f"files that are being tracked:\n{f.read()}")
@@ -48,6 +49,7 @@ def run(name):
           #      exit(0)
                 f.write(file)
                 f.write("\n")
+                folder(file)
     elif name == "help":
          print("help:\n")
          print("commands: read write init add help")
