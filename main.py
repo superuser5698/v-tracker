@@ -13,15 +13,17 @@ def folder(folder):
          
 def start():
     global files
+    
+    with open("v-track/tracker.txt", 'r') as f:     
+        for line in f:
+            files.append(line.strip())
     while True:
-            with open("v-track/tracker.txt", 'r') as f:     
-                 for line in f:
-                      files.append(line.strip())
-            
-            
-                      
-            print(files)          
-            sleep(1)
+        for tracked_file in files:
+            with open(f"v-track/{tracked_file}/{tracked_file}", mode='r') as f3:
+                with open(tracked_file, mode='r') as f4:
+                    if f4.read() != f3.read():
+                        
+
 
 
 
@@ -47,7 +49,7 @@ def run(name):
         with open("v-track/tracker.txt", mode="r") as f:
             print(f"files that are being tracked:\n{f.read()}")
     elif name == "add":
-            file = input("file: ") 
+            file2 = input("file: ") 
             print("addding", file, "to tracker.txt")
             with open("v-track/tracker.txt", mode="a+") as f:
       #      stoof = f.read()
@@ -55,9 +57,9 @@ def run(name):
         #    if file in stoof:
          #       print("sorry duplicates will crash the thing")
           #      exit(0)
-                f.write(file)
+                f.write(file2)
                 f.write("\n")
-                folder(file)
+                folder(file2)
     elif name == "help":
          print("help:\n")
          print("commands: read write init add help")
