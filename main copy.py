@@ -22,10 +22,11 @@ def start():
             print(f"Attempting to open: v-track/{tracked_file}/{tracked_file}")
             with open(f"v-track/{tracked_file}/{tracked_file}", mode='r') as f3:
                 print("opend")
-                try:
+                f3t = f3.read()
+            try:
                     with open(tracked_file, mode='r') as f4:
                         stoof = f4.read()
-                        if f4.read() != f3.read():
+                        if stoof != f3t:
                             print("chengin...")
                        #     with open(f"v-track/{tracked_file}/file_num.txt") as f24: 
                         #        print(f24.read())
@@ -34,9 +35,10 @@ def start():
                             from random import randint
 
                             with open(f"v-track/{tracked_file}/{tracked_file}{randint(1,99999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999)}", mode="w") as f32:
-                                f32.write(stoof)                
+                                f32.write(stoof)      
+                                print("done")          
                             sleep(5)
-                except PermissionError as e:
+            except PermissionError as e:
                     print(" permission denied most likley that one of the tracked files is being used")
                     sleep(5)
             sleep(5)            
