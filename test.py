@@ -1,2 +1,1 @@
-import pip
-pip.main("ssd")
+why

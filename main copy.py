@@ -3,12 +3,17 @@ from time import sleep
 from os import makedirs
 from watchdog.observers import Observer
 from watchdog.events import FileSystemEventHandler
+observer = Observer()
 
-class h(FileSystemEventHandler):
+class H(FileSystemEventHandler):
     def on_modified(self, event):
-        if not event.is_directory and event.src_path.endswith(WATCH_FILE):
+        if not event.is_directory:
+             on_change(WATCH_FILE)
+event_handler = H()
+
             
 files = []
+WATCH_FILE = "test.py", "test2.py"
 def folder(folder):
     makedirs(f"c:/Users/Ayaansh_Joshi/Desktop/v-tracker-latest/v-track/{folder}")
 
@@ -18,37 +23,22 @@ def folder(folder):
         f2.write(stuff)
 
          
-def start():
-    global files
+
     
-    with open("v-track/tracker.txt", 'r') as f:     
+with open("v-track/tracker.txt", 'r') as f:     
         for line in f:
             files.append(line.strip())
-    while True:
-        for tracked_file in files:
-            print(f"Attempting to open: v-track/{tracked_file}/{tracked_file}")
-            with open(f"v-track/{tracked_file}/{tracked_file}", mode='r') as f3:
-                print("opend")
-                f3t = f3.read()
-            try:
-                    with open(tracked_file, mode='r') as f4:
-                        stoof = f4.read()
-                        if stoof != f3t:
-                            print("chengin...")
-                       #     with open(f"v-track/{tracked_file}/file_num.txt") as f24: 
-                        #        print(f24.read())
-                         #       file_num = f24.read()    
-                             #   file_num += 1
-                            from random import randint
+          #  path = line.strip()
+           # observer.schedule(event_handler, path, recursive=True)
+        print(files)      
+        for file in files:
+            observer.schedule(event_handler, file, recursive=True)
+        observer.start()
+        def on_change(file):
+            print(file, "file is being changed")
+    
 
-                            with open(f"v-track/{tracked_file}/{tracked_file}{randint(1,99999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999)}", mode="w") as f32:
-                                f32.write(stoof)      
-                                print("done")          
-                            sleep(5)
-            except PermissionError as e:
-                    print(" permission denied most likley that one of the tracked files is being used")
-                    sleep(5)
-            sleep(5)            
+            #sleep(5)            
 
 
 
@@ -97,9 +87,23 @@ def run(name):
         pass
     else:
          print("sorry unkown command")
+  #  observer = Observer()
+   # observer.schedule(event_handler := H(), path=".", recursive=False)
+    #observer.start()
+#    try:
+ #       while True: 
+  #          sleep(1)
+   # except KeyboardInterrupt:
+    #    observer.stop()
+    #observer.join()
 
 arg = argparse.ArgumentParser(description="git like program")
 arg.add_argument("action", help="do something")
 args = arg.parse_args()
 run(args.action)
-start()
+try:
+    while True:
+        sleep(1)
+except KeyboardInterrupt:
+    observer.stop()
+observer.join()
