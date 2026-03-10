@@ -34,6 +34,7 @@ class EventHandler(FileSystemEventHandler):
             event (FileSystemEvent): event from file system.
         """
         if self.should_trigger(event):
+            modified_file = event.src_path
             run('clear', shell=True, check=False)
             print(f'Event type: {str(event.event_type).upper()}')
             print(f'Path : {event.src_path}')
@@ -47,7 +48,7 @@ class EventHandler(FileSystemEventHandler):
                 self.wait_kill_signal()
                 print(f"Killed successfully{postfix}\n")
 
-            self.process = Popen(f'{self.command} {self.executable}', shell=True)
+                self.process = Popen(f'python main.py recheck --{modified_file} ', shell=True)
             print(f"New process: \"{self.process.args}\" (PID:{self.process.pid})")
             self.last_trigger = time.time()
             print(f'Running {self.runner}')
