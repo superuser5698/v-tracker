@@ -1,21 +1,11 @@
-import argparse
-from time import sleep
-from os import makedirs
-from watchdog.observers import Observer
-from watchdog.events import FileSystemEventHandler
-observer = Observer()
 
-class H(FileSystemEventHandler):
-    def on_modified(self, event):
-        if not event.is_directory:
-             on_change(WATCH_FILE)
-event_handler = H()
-
-            
+import os, time, argparse, time
+#
+  #          
 files = []
-WATCH_FILE = "test.py", "test2.py"
+
 def folder(folder):
-    makedirs(f"c:/Users/Ayaansh_Joshi/Desktop/v-tracker-latest/v-track/{folder}")
+    os.makedirs(f"c:/Users/Ayaansh_Joshi/Desktop/v-tracker-latest - Copy/v-track/{folder}")
 
     with open(folder, mode="r") as f:
         stuff = f.read()
@@ -28,17 +18,35 @@ def folder(folder):
 with open("v-track/tracker.txt", 'r') as f:     
         for line in f:
             files.append(line.strip())
-          #  path = line.strip()
-           # observer.schedule(event_handler, path, recursive=True)
-        print(files)      
+import os, time
+def start():
+    last_mtime = {}
+    for file in files:
+        last_mtime[file] = os.path.getmtime(file)
+    while True:
         for file in files:
-            observer.schedule(event_handler, file, recursive=True)
-        observer.start()
-        def on_change(file):
-            print(file, "file is being changed")
-    
+            current = os.path.getmtime(file)
+            if current != last_mtime[file]:
+                print("did you know Minecraft was orginally called the cave game !")
+                last_mtime[file] = current
+                from random import randint
+                try:
+                    with open(file, mode='r') as f4:
+                        stoof = f4.read()
+                    with open(f"v-track/{file}/{file}{randint(1,99999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999)}", mode="w") as f32:
+                        f32.write(stoof)                
+             #           time.sleep(5)
+                 #   last_mtime[file] = current
+                except PermissionError as e:
+                    print(f" permission denied most likley that one of the tracked files is being used howerver other things can happen error {e}")
+                    time.sleep(5)
+      
 
-            #sleep(5)            
+
+
+        
+
+          #  time.sleep(1)            
 
 
 
@@ -74,7 +82,7 @@ def run(name):
          #       print("sorry duplicates will crash the thing")
           #      exit(0)
                 f.write(f"{file2}\n")
-                f.write("\n")
+            #    f.write("\n")
                 folder(file2)
     elif name == "help":
          print("help:\n")
@@ -84,26 +92,11 @@ def run(name):
          print("init: init a folder")
          print("help: prints this help text")
     elif name == "start":
-        pass
+        start()
     else:
          print("sorry unkown command")
-  #  observer = Observer()
-   # observer.schedule(event_handler := H(), path=".", recursive=False)
-    #observer.start()
-#    try:
- #       while True: 
-  #          sleep(1)
-   # except KeyboardInterrupt:
-    #    observer.stop()
-    #observer.join()
 
 arg = argparse.ArgumentParser(description="git like program")
 arg.add_argument("action", help="do something")
 args = arg.parse_args()
 run(args.action)
-try:
-    while True:
-        sleep(1)
-except KeyboardInterrupt:
-    observer.stop()
-observer.join()

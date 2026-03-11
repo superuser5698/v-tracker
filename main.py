@@ -1,9 +1,11 @@
-import argparse
-from time import sleep
-from os import makedirs
+
+import os, time, argparse, time
+#
+  #          
 files = []
+
 def folder(folder):
-    makedirs(f"c:/Users/Ayaansh_Joshi/Desktop/v-tracker-latest/v-track/{folder}")
+    os.makedirs(f"c:/Users/Ayaansh_Joshi/Desktop/v-tracker-latest - Copy/v-track/{folder}")
 
     with open(folder, mode="r") as f:
         stuff = f.read()
@@ -11,35 +13,40 @@ def folder(folder):
         f2.write(stuff)
 
          
-def start():
-    global files
+
     
-    with open("v-track/tracker.txt", 'r') as f:     
+with open("v-track/tracker.txt", 'r') as f:     
         for line in f:
             files.append(line.strip())
+import os, time
+def start():
+    last_mtime = {}
+    for file in files:
+        last_mtime[file] = os.path.getmtime(file)
     while True:
-        for tracked_file in files:
-            print(f"Attempting to open: v-track/{tracked_file}/{tracked_file}")
-            with open(f"v-track/{tracked_file}/{tracked_file}", mode='r') as f3:
-                print("opend")
+        for file in files:
+            current = os.path.getmtime(file)
+            if current != last_mtime[file]:
+                print("did you know Minecraft was orginally called the cave game !")
+                last_mtime[file] = current
+                from random import randint
                 try:
-                    with open(tracked_file, mode='r') as f4:
+                    with open(file, mode='r') as f4:
                         stoof = f4.read()
-                        if f4.read() != f3.read():
-                            print("chengin...")
-                       #     with open(f"v-track/{tracked_file}/file_num.txt") as f24: 
-                        #        print(f24.read())
-                         #       file_num = f24.read()    
-                             #   file_num += 1
-                            from random import randint
-
-                            with open(f"v-track/{tracked_file}/{tracked_file}{randint(1,99999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999)}", mode="w") as f32:
-                                f32.write(stoof)                
-                            sleep(5)
+                    with open(f"v-track/{file}/{file}{randint(1,99999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999)}", mode="w") as f32:
+                        f32.write(stoof)                
+             #           time.sleep(5)
+                 #   last_mtime[file] = current
                 except PermissionError as e:
-                    print(" permission denied most likley that one of the tracked files is being used")
-                    sleep(5)
-            sleep(5)            
+                    print(f" permission denied most likley that one of the tracked files is being used howerver other things can happen error {e}")
+                    time.sleep(5)
+      
+
+
+
+        
+
+          #  time.sleep(1)            
 
 
 
@@ -75,7 +82,7 @@ def run(name):
          #       print("sorry duplicates will crash the thing")
           #      exit(0)
                 f.write(f"{file2}\n")
-                f.write("\n")
+            #    f.write("\n")
                 folder(file2)
     elif name == "help":
          print("help:\n")
@@ -85,7 +92,7 @@ def run(name):
          print("init: init a folder")
          print("help: prints this help text")
     elif name == "start":
-        pass
+        start()
     else:
          print("sorry unkown command")
 
@@ -93,4 +100,3 @@ arg = argparse.ArgumentParser(description="git like program")
 arg.add_argument("action", help="do something")
 args = arg.parse_args()
 run(args.action)
-start()

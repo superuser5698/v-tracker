@@ -1,11 +1,11 @@
 
 import os, time, argparse, time
-
-            
+#
+  #          
 files = []
 
 def folder(folder):
-    os.makedirs(f"c:/Users/Ayaansh_Joshi/Desktop/v-tracker-latest/v-track/{folder}")
+    os.makedirs(f"c:/Users/Ayaansh_Joshi/Desktop/v-tracker-latest - Copy/v-track/{folder}")
 
     with open(folder, mode="r") as f:
         stuff = f.read()
@@ -20,12 +20,27 @@ with open("v-track/tracker.txt", 'r') as f:
             files.append(line.strip())
 import os, time
 def start():
+    last_mtime = {}
+    for file in files:
+        last_mtime[file] = os.path.getmtime(file)
     while True:
         for file in files:
-            last_mtime = os.path.getmtime(file)
-            if os.path.getmtime(file) != last_mtime:
+            current = os.path.getmtime(file)
+            if current != last_mtime[file]:
                 print("did you know Minecraft was orginally called the cave game !")
-                last_mtime = os.path.getmtime(file)
+                last_mtime[file] = current
+                from random import randint
+                try:
+                    with open(file, mode='r') as f4:
+                        stoof = f4.read()
+                    with open(f"v-track/{file}/{file}{randint(1,99999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999)}", mode="w") as f32:
+                        f32.write(stoof)                
+             #           time.sleep(5)
+                 #   last_mtime[file] = current
+                except PermissionError as e:
+                    print(f" permission denied most likley that one of the tracked files is being used howerver other things can happen error {e}")
+                    time.sleep(5)
+      
 
 
 
@@ -67,7 +82,7 @@ def run(name):
          #       print("sorry duplicates will crash the thing")
           #      exit(0)
                 f.write(f"{file2}\n")
-                f.write("\n")
+            #    f.write("\n")
                 folder(file2)
     elif name == "help":
          print("help:\n")
