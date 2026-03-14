@@ -1,7 +1,5 @@
-
 import os, time, argparse, time
-#
-  #          
+       
 files = []
 
 def folder(folder):
@@ -14,12 +12,12 @@ def folder(folder):
 
          
 
-    
-with open("v-track/tracker.txt", 'r') as f:     
-        for line in f:
-            files.append(line.strip())
-import os, time
-def start():
+def start():   
+    with open("v-track/tracker.txt", 'r') as f:     
+            for line in f:
+                files.append(line.strip())
+
+
     last_mtime = {}
     for file in files:
         last_mtime[file] = os.path.getmtime(file)
