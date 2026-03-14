@@ -5,7 +5,7 @@ import os, time, argparse, time
 files = []
 
 def folder(folder):
-    os.makedirs(f"c:/Users/Ayaansh_Joshi/Desktop/v-tracker-latest - Copy/v-track/{folder}")
+    os.makedirs(f"{os.getcwd()}/{folder}")
 
     with open(folder, mode="r") as f:
         stuff = f.read()
@@ -27,13 +27,14 @@ def start():
         for file in files:
             current = os.path.getmtime(file)
             if current != last_mtime[file]:
+                root, extension = os.path.splitext(file)
                 print("did you know Minecraft was orginally called the cave game !")
                 last_mtime[file] = current
                 from random import randint
                 try:
                     with open(file, mode='r') as f4:
                         stoof = f4.read()
-                    with open(f"v-track/{file}/{file}{randint(1,99999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999)}", mode="w") as f32:
+                    with open(f"v-track/{file}/{file}{randint(1,99999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999)}{extension}", mode="w") as f32:
                         f32.write(stoof)                
              #           time.sleep(5)
                  #   last_mtime[file] = current
