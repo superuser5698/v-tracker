@@ -1,6 +1,1 @@
-import pythoncom
-
-pythoncom.CoInitialize()
-print("Hello, World!")
-
-ssssd = "1111111111111111111111111111111111111111111111111111dddddddddddddddddddddddddddddddddddd'''''''''''''''''''''''''''''''"
+hi, ther, bob, the, builder = 1232
