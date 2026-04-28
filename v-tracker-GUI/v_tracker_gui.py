@@ -45,8 +45,8 @@ v_tracker_gui.insert_text.grid(row = 3, column = 3, columnspan = 4, rowspan = 1,
 v_tracker_gui.insert_text.insert(0, "")
 def defocus(event):
   event.widget.master.focus_set()
-v_tracker_gui.select_option_dropdown = ttk.Combobox(v_tracker_gui, values = ['add','read',], width = 1, state = 'readonly')
-v_tracker_gui.select_option_dropdown.grid(row = 1, column = 2, columnspan = 3, rowspan = 1, sticky = N+S+E+W)
+v_tracker_gui.select_option_dropdown = ttk.Combobox(v_tracker_gui, values = ['read - check tracked files','add - add a tracked file','init - init the  working folder',], width = 1, state = 'readonly')
+v_tracker_gui.select_option_dropdown.grid(row = 1, column = 1, columnspan = 5, rowspan = 1, sticky = N+S+E+W)
 v_tracker_gui.select_option_dropdown.bind('<FocusIn>', defocus)
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~BUTTONS~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -58,12 +58,21 @@ def runEvent1(argument):
       Event1(argument)
     except TypeError:
       Event1()
+def runEvent2(argument):
+  if not(__name__ == '__main__'):
+    from main import Event2
+    try:
+      Event2(argument)
+    except TypeError:
+      Event2()
 v_tracker_gui.run_option_button = Button(v_tracker_gui, text = "run", font = ('Arial', 16), width = 1, height = 1, fg = '#FFFFFF', command = lambda: runEvent1('run_option_button'), bg = '#000000')
 v_tracker_gui.run_option_button.grid(row = 1, column = 7, columnspan = 1, rowspan = 1, sticky = N+S+E+W)
 v_tracker_gui.help_button = Button(v_tracker_gui, text = "help", font = ('Arial', 16), width = 1, height = 1, fg = '#FFFFFF', command = lambda: runEvent1('help_button'), bg = '#000000')
 v_tracker_gui.help_button.grid(row = 3, column = 0, columnspan = 2, rowspan = 1, sticky = N+S+E+W)
 v_tracker_gui.info_button = Button(v_tracker_gui, text = "info", font = ('Arial', 16), width = 1, height = 1, fg = '#FFFFFF', command = lambda: runEvent1('info_button'), bg = '#000000')
 v_tracker_gui.info_button.grid(row = 3, column = 8, columnspan = 2, rowspan = 1, sticky = N+S+E+W)
+v_tracker_gui.ok_button = Button(v_tracker_gui, text = "ok", font = ('Arial', 16), width = 1, height = 1, fg = '#FFFFFF', command = lambda: runEvent2('ok_button'), bg = '#0000FF')
+v_tracker_gui.ok_button.grid(row = 1, column = 9, columnspan = 1, rowspan = 1, sticky = N+S+E+W)
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~HELPER FUNCTIONS~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -81,6 +90,7 @@ def hideAllWidgets():
     v_tracker_gui.run_option_button.grid_remove()
     v_tracker_gui.help_button.grid_remove()
     v_tracker_gui.info_button.grid_remove()
+    v_tracker_gui.ok_button.grid_remove()
     v_tracker_gui.select_option_dropdown.grid_remove()
     v_tracker_gui.result_of_option.grid_remove()
 v_tracker_gui.hideAllWidgets = hideAllWidgets
@@ -89,6 +99,7 @@ def showAllWidgets():
     v_tracker_gui.run_option_button.grid()
     v_tracker_gui.help_button.grid()
     v_tracker_gui.info_button.grid()
+    v_tracker_gui.ok_button.grid()
     v_tracker_gui.select_option_dropdown.grid()
     v_tracker_gui.result_of_option.grid()
 v_tracker_gui.showAllWidgets = showAllWidgets
@@ -106,8 +117,8 @@ v_tracker_gui.show = show
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~CUSTOM-WIDGETS~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-v_tracker_gui.result_of_option = Label(v_tracker_gui, text = 'result', font = ('Arial', 16), width = 1, height = 1, fg = '#000000', bg = '#55FF55')
-v_tracker_gui.result_of_option.grid(row = 6, column = 1, columnspan = 8, rowspan = 3, sticky = N+S+E+W)
+v_tracker_gui.result_of_option = Label(v_tracker_gui, text = 'result', font = ('Arial', 10), width = 1, height = 1, fg = '#000000', bg = '#55FF55')
+v_tracker_gui.result_of_option.grid(row = 5, column = 0, columnspan = 10, rowspan = 5, sticky = N+S+E+W)
 dimensions = [v_tracker_gui.winfo_width(), v_tracker_gui.winfo_height()]
 def resize():
   global v_tracker_gui, dimensions
@@ -115,6 +126,7 @@ def resize():
     v_tracker_gui.run_option_button.config(wraplength = math.ceil(v_tracker_gui.winfo_width() * 1 / 10) + 2)
     v_tracker_gui.help_button.config(wraplength = math.ceil(v_tracker_gui.winfo_width() * 2 / 10) + 2)
     v_tracker_gui.info_button.config(wraplength = math.ceil(v_tracker_gui.winfo_width() * 2 / 10) + 2)
+    v_tracker_gui.ok_button.config(wraplength = math.ceil(v_tracker_gui.winfo_width() * 1 / 10) + 2)
     v_tracker_gui.BackgroundImageOriginal = Image.open(r'C:/Users/Ayaansh_Joshi/Downloads/full-res-for-display.png')
     v_tracker_gui.BackgroundImageImage = ImageOps.exif_transpose(v_tracker_gui.BackgroundImageOriginal)
     v_tracker_gui.BackgroundImageImage = ImageTk.PhotoImage(v_tracker_gui.BackgroundImageImage.resize((v_tracker_gui.winfo_width(), v_tracker_gui.winfo_height()), Image.Resampling.LANCZOS))
