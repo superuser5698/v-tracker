@@ -1,0 +1,99 @@
+import os, time, argparse, time
+       
+files = []
+
+def folder(folder):
+    os.makedirs(f"{os.getcwd()}/v-track/{folder}")
+
+    with open(folder, mode="r") as f:
+        stuff = f.read()
+    with open(f"v-track/{folder}/{folder}",mode="w") as f2:
+        f2.write(stuff)
+
+         
+
+def start():   
+    with open("v-track/tracker.txt", 'r') as f:     
+            for line in f:
+                files.append(line.strip())
+
+
+    last_mtime = {}
+    for file in files:
+        last_mtime[file] = os.path.getmtime(file)
+    while True:
+        for file in files:
+            current = os.path.getmtime(file)
+            if current != last_mtime[file]:
+                root, extension = os.path.splitext(file)
+                print("did you know Minecraft was orginally called the cave game !")
+                last_mtime[file] = current
+                from random import randint
+                try:
+                    with open(file, mode='r') as f4:
+                        stoof = f4.read()
+                    with open(f"v-track/{file}/{file}{randint(1,99999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999)}{extension}", mode="w") as f32:
+                        f32.write(stoof)                
+             #           time.sleep(5)
+                 #   last_mtime[file] = current
+                except PermissionError as e:
+                    print(f" permission denied most likley that one of the tracked files is being used howerver other things can happen error {e}")
+                    time.sleep(5)
+      
+
+
+
+        
+
+          #  time.sleep(1)            
+
+
+
+
+         
+def run(name):
+    if name == "init":
+
+        import os
+
+        try:
+            BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+            vtrack_path = os.path.join(BASE_DIR, "v-track")
+
+            # Create folder safely
+            os.makedirs(vtrack_path, exist_ok=True)
+
+            tracker_file = os.path.join(vtrack_path, "tracker.txt")
+
+            # Create tracker file if it doesn't exist
+            if not os.path.exists(tracker_file):
+                with open(tracker_file, "w") as f:
+                    pass
+
+            print("Initialization complete.")
+
+        except Exception as e:
+            print(f"Init error: {e}")
+    elif name == "add":
+            file2 = input("file: ") 
+        #    print("addding", file, "to tracker.txt")
+            with open("v-track/tracker.txt", mode="a+") as f:
+      #      stoof = f.read()
+       #     print(stoof)
+        #    if file in stoof:
+         #       print("sorry duplicates will crash the thing")
+          #      exit(0)
+                f.write(f"{file2}\n")
+            #    f.write("\n")
+                folder(file2)
+    elif name == "help":
+         print("help:\n")
+         print("commands: read write init add help")
+         print("read: get list of files being tracked")
+         print("add: adds a file to be tracked")
+         print("init: init a folder")
+         print("help: prints this help text")
+    elif name == "start":
+        start()
+    else:
+         print("sorry unkown command")

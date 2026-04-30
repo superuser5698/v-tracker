@@ -45,7 +45,7 @@ v_tracker_gui.insert_text.grid(row = 3, column = 3, columnspan = 4, rowspan = 1,
 v_tracker_gui.insert_text.insert(0, "")
 def defocus(event):
   event.widget.master.focus_set()
-v_tracker_gui.select_option_dropdown = ttk.Combobox(v_tracker_gui, values = ['read - check tracked files','add - add a tracked file','init - init the  working folder',], width = 1, state = 'readonly')
+v_tracker_gui.select_option_dropdown = ttk.Combobox(v_tracker_gui, values = ['read - check tracked files','add - add a tracked file','init - initialize a chosen folder',], width = 1, state = 'readonly')
 v_tracker_gui.select_option_dropdown.grid(row = 1, column = 1, columnspan = 5, rowspan = 1, sticky = N+S+E+W)
 v_tracker_gui.select_option_dropdown.bind('<FocusIn>', defocus)
 
