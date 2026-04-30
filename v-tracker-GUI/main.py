@@ -8,7 +8,8 @@ def Eventinit(name):
     print(name)
 def Event1(name):
     print(name)
-    if name == "help_button":
+    if name == "info_button":
         webbrowser.open("https://github.com/superuser5698/v-tracker")
-
+    elif name == "help_button":
+        webbrowser.open("https://github.com/superuser5698/v-tracker/blob/main/manual.txt")
 v_tracker_gui.run()
