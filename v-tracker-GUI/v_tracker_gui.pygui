@@ -68,29 +68,6 @@
       </saveDataEntry>
       <saveDataButton>
         <button>
-          <xPos>7</xPos>
-          <yPos>8</yPos>
-          <xSpace>1</xSpace>
-          <ySpace>1</ySpace>
-          <title>run_option_button</title>
-          <colour>
-            <float>0</float>
-            <float>0</float>
-            <float>0</float>
-          </colour>
-          <text>run</text>
-          <hexColour>000000</hexColour>
-          <hexTextColour>FFFFFF</hexTextColour>
-          <textColour>
-            <float>1</float>
-            <float>1</float>
-            <float>1</float>
-          </textColour>
-          <textSize>16</textSize>
-          <eventName>Event1</eventName>
-          <font>Arial</font>
-        </button>
-        <button>
           <xPos>0</xPos>
           <yPos>6</yPos>
           <xSpace>2</xSpace>
@@ -120,17 +97,17 @@
           <ySpace>1</ySpace>
           <title>info_button</title>
           <colour>
-            <float>0</float>
-            <float>0</float>
-            <float>0</float>
+            <float>0.05882353</float>
+            <float>0.05882353</float>
+            <float>0.05882353</float>
           </colour>
           <text>info</text>
-          <hexColour>000000</hexColour>
-          <hexTextColour>FFFFFF</hexTextColour>
+          <hexColour>0F0F0F</hexColour>
+          <hexTextColour>FFF00F</hexTextColour>
           <textColour>
             <float>1</float>
-            <float>1</float>
-            <float>1</float>
+            <float>0.9411765</float>
+            <float>0.05882353</float>
           </textColour>
           <textSize>16</textSize>
           <eventName>Event1</eventName>
@@ -159,240 +136,91 @@
           <eventName>Event1</eventName>
           <font>Arial</font>
         </button>
-      </saveDataButton>
-      <saveDataDropdown>
-        <dropdown>
-          <xPos>1</xPos>
-          <yPos>8</yPos>
-          <xSpace>5</xSpace>
-          <ySpace>1</ySpace>
-          <title>select_option_dropdown</title>
-          <colour>
-            <float>255</float>
-            <float>255</float>
-            <float>255</float>
-          </colour>
-          <values>
-            <string>read - check tracked files</string>
-            <string>add - add a tracked file</string>
-            <string>init - init the  working folder</string>
-          </values>
-        </dropdown>
-      </saveDataDropdown>
-      <saveDataImage />
-      <saveDataCustom>
-        <custom>
+        <button>
           <xPos>0</xPos>
-          <yPos>4</yPos>
-          <xSpace>10</xSpace>
-          <ySpace>5</ySpace>
-          <title>result_of_option</title>
+          <yPos>8</yPos>
+          <xSpace>2</xSpace>
+          <ySpace>1</ySpace>
+          <title>add_button</title>
           <colour>
+            <float>0</float>
             <float>1</float>
-            <float>1</float>
-            <float>1</float>
+            <float>0.78039217</float>
           </colour>
-          <objectData>Label(text = 'result', font = ('Arial', 10), width = 1, height = 1, fg = '#000000', bg = '#55FF55')</objectData>
-          <wrapText>false</wrapText>
-        </custom>
-      </saveDataCustom>
-      <moreCode>
-        <code />
-        <file />
-      </moreCode>
-    </saveDataPacket>
-    <saveDataPacket>
-      <windowSize>
-        <int>400</int>
-        <int>400</int>
-      </windowSize>
-      <parentScript>main</parentScript>
-      <gridSize>
-        <int>10</int>
-        <int>10</int>
-      </gridSize>
-      <title>v_tracker_gui</title>
-      <exportLocation>C:\Users\Ayaansh_Joshi\Desktop\v-tracker\v-tracker-GUI\v_tracker_gui.py</exportLocation>
-      <backgroundColourHex>FFFFFF</backgroundColourHex>
-      <backgroundColour>
-        <float>1</float>
-        <float>1</float>
-        <float>1</float>
-      </backgroundColour>
-      <mainWindow>true</mainWindow>
-      <format>4</format>
-      <DPIaware>false</DPIaware>
-      <resizable>true</resizable>
-      <backgroundImage>
-        <xPos>0</xPos>
-        <yPos>9</yPos>
-        <xSpace>10</xSpace>
-        <ySpace>10</ySpace>
-        <title>BackgroundImage</title>
-        <colour>
-          <float>1</float>
-          <float>1</float>
-          <float>1</float>
-        </colour>
-        <hexColour>FFFFFF</hexColour>
-        <file>C:\Users\Ayaansh_Joshi\Downloads\full-res-for-display.png</file>
-        <maintainAspect>false</maintainAspect>
-        <relativeLocation>false</relativeLocation>
-        <relativeLocationName />
-        <size>
-          <float>1</float>
-          <float>1</float>
-        </size>
-        <isButton>false</isButton>
-        <eventName>Event1</eventName>
-      </backgroundImage>
-      <saveDataLabel />
-      <saveDataEntry>
-        <entry>
+          <text>add</text>
+          <hexColour>00FFC7</hexColour>
+          <hexTextColour>0000FF</hexTextColour>
+          <textColour>
+            <float>0</float>
+            <float>0</float>
+            <float>1</float>
+          </textColour>
+          <textSize>16</textSize>
+          <eventName>Event1</eventName>
+          <font>Arial</font>
+        </button>
+        <button>
           <xPos>3</xPos>
-          <yPos>6</yPos>
-          <xSpace>4</xSpace>
+          <yPos>8</yPos>
+          <xSpace>2</xSpace>
           <ySpace>1</ySpace>
-          <title>insert_text</title>
+          <title>read_button</title>
+          <colour>
+            <float>0</float>
+            <float>1</float>
+            <float>0</float>
+          </colour>
+          <text>read</text>
+          <hexColour>00FF00</hexColour>
+          <hexTextColour>AE00FF</hexTextColour>
+          <textColour>
+            <float>0.68235296</float>
+            <float>0</float>
+            <float>1</float>
+          </textColour>
+          <textSize>16</textSize>
+          <eventName>Event1</eventName>
+          <font>Arial</font>
+        </button>
+        <button>
+          <xPos>6</xPos>
+          <yPos>8</yPos>
+          <xSpace>2</xSpace>
+          <ySpace>1</ySpace>
+          <title>init_button</title>
           <colour>
             <float>1</float>
             <float>1</float>
             <float>1</float>
           </colour>
-          <text />
+          <text>init</text>
           <hexColour>FFFFFF</hexColour>
-          <textSize>16</textSize>
-          <border>true</border>
-          <font>Arial</font>
-        </entry>
-      </saveDataEntry>
-      <saveDataButton>
-        <button>
-          <xPos>7</xPos>
-          <yPos>8</yPos>
-          <xSpace>1</xSpace>
-          <ySpace>1</ySpace>
-          <title>run_option_button</title>
-          <colour>
-            <float>0</float>
-            <float>0</float>
-            <float>0</float>
-          </colour>
-          <text>run</text>
-          <hexColour>000000</hexColour>
-          <hexTextColour>FFFFFF</hexTextColour>
+          <hexTextColour>000000</hexTextColour>
           <textColour>
-            <float>1</float>
-            <float>1</float>
-            <float>1</float>
-          </textColour>
-          <textSize>16</textSize>
-          <eventName>Event1</eventName>
-          <font>Arial</font>
-        </button>
-        <button>
-          <xPos>0</xPos>
-          <yPos>6</yPos>
-          <xSpace>2</xSpace>
-          <ySpace>1</ySpace>
-          <title>help_button</title>
-          <colour>
             <float>0</float>
             <float>0</float>
             <float>0</float>
-          </colour>
-          <text>help</text>
-          <hexColour>000000</hexColour>
-          <hexTextColour>FFFFFF</hexTextColour>
-          <textColour>
-            <float>1</float>
-            <float>1</float>
-            <float>1</float>
-          </textColour>
-          <textSize>16</textSize>
-          <eventName>Event1</eventName>
-          <font>Arial</font>
-        </button>
-        <button>
-          <xPos>8</xPos>
-          <yPos>6</yPos>
-          <xSpace>2</xSpace>
-          <ySpace>1</ySpace>
-          <title>info_button</title>
-          <colour>
-            <float>0</float>
-            <float>0</float>
-            <float>0</float>
-          </colour>
-          <text>info</text>
-          <hexColour>000000</hexColour>
-          <hexTextColour>FFFFFF</hexTextColour>
-          <textColour>
-            <float>1</float>
-            <float>1</float>
-            <float>1</float>
-          </textColour>
-          <textSize>16</textSize>
-          <eventName>Event1</eventName>
-          <font>Arial</font>
-        </button>
-        <button>
-          <xPos>9</xPos>
-          <yPos>8</yPos>
-          <xSpace>1</xSpace>
-          <ySpace>1</ySpace>
-          <title>ok_button</title>
-          <colour>
-            <float>0</float>
-            <float>0</float>
-            <float>1</float>
-          </colour>
-          <text>ok</text>
-          <hexColour>0000FF</hexColour>
-          <hexTextColour>FFFFFF</hexTextColour>
-          <textColour>
-            <float>1</float>
-            <float>1</float>
-            <float>1</float>
           </textColour>
           <textSize>16</textSize>
           <eventName>Event1</eventName>
           <font>Arial</font>
         </button>
       </saveDataButton>
-      <saveDataDropdown>
-        <dropdown>
-          <xPos>1</xPos>
-          <yPos>8</yPos>
-          <xSpace>5</xSpace>
-          <ySpace>1</ySpace>
-          <title>select_option_dropdown</title>
-          <colour>
-            <float>255</float>
-            <float>255</float>
-            <float>255</float>
-          </colour>
-          <values>
-            <string>read - check tracked files</string>
-            <string>add - add a tracked file</string>
-            <string>init - initialize a chosen folder</string>
-          </values>
-        </dropdown>
-      </saveDataDropdown>
+      <saveDataDropdown />
       <saveDataImage />
       <saveDataCustom>
         <custom>
-          <xPos>0</xPos>
+          <xPos>1</xPos>
           <yPos>4</yPos>
-          <xSpace>10</xSpace>
-          <ySpace>5</ySpace>
+          <xSpace>8</xSpace>
+          <ySpace>4</ySpace>
           <title>result_of_option</title>
           <colour>
             <float>1</float>
             <float>1</float>
             <float>1</float>
           </colour>
-          <objectData>Label(text = 'result', font = ('Arial', 10), width = 1, height = 1, fg = '#000000', bg = '#55FF55')</objectData>
+          <objectData>Label(text = '', font = ('Arial', 10), width = 1, height = 1, fg = '#000000', bg = '#55FF55')</objectData>
           <wrapText>false</wrapText>
         </custom>
       </saveDataCustom>
