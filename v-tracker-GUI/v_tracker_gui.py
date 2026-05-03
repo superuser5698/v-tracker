@@ -40,9 +40,6 @@ v_tracker_gui.BackgroundImageImage = ImageOps.exif_transpose(v_tracker_gui.Backg
 v_tracker_gui.BackgroundImageImage = ImageTk.PhotoImage(v_tracker_gui.BackgroundImageImage.resize((math.ceil(400 * dpi / 96), math.ceil(400 * dpi / 96)), Image.Resampling.LANCZOS))
 v_tracker_gui.BackgroundImage = Label(v_tracker_gui, image = v_tracker_gui.BackgroundImageImage, width = 1, height = 1, bg = '#FFFFFF')
 v_tracker_gui.BackgroundImage.grid(row = 0, column = 0, columnspan = 10, rowspan = 10, sticky = N+S+E+W)
-v_tracker_gui.insert_text = Entry(v_tracker_gui, width = 1, bg = '#FFFFFF', font = ('Arial', 16), justify = 'center')
-v_tracker_gui.insert_text.grid(row = 3, column = 3, columnspan = 4, rowspan = 1, sticky = N+S+E+W)
-v_tracker_gui.insert_text.insert(0, "")
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~BUTTONS~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -55,38 +52,45 @@ def runEvent1(argument):
       Event1()
 def runEventadd(argument):
   if not(__name__ == '__main__'):
-    from main import Eventadd
+    from main import Eventaddd
     try:
-      Eventadd(argument)
+      Eventaddd(argument)
     except TypeError:
-      Eventadd()
+      Eventaddd()
 def runEventread(argument):
   if not(__name__ == '__main__'):
-    from main import Event1
+    from main import Eventread
     try:
       Eventread(argument)
     except TypeError:
       Eventread()
-def runEvent1init(argument):
+def runEventinit(argument):
   if not(__name__ == '__main__'):
     from main import Eventinit
     try:
       Eventinit(argument)
     except TypeError:
       Eventinit()
+def runEventdelete(argument):
+  if not(__name__ == '__main__'):
+    from main import Eventdelete
+    try:
+      Eventdelete(argument)
+    except TypeError:
+      Eventdelete()
 
-v_tracker_gui.help_button = Button(v_tracker_gui, text = "help", font = ('Arial', 16), width = 1, height = 1, fg = '#FFFFFF', command = lambda: runEvent1('help_button'), bg = '#000000')
+v_tracker_gui.help_button = Button(v_tracker_gui, text = "help", font = ('Impact', 16), width = 1, height = 1, fg = '#FFFFFF', command = lambda: runEvent1('help_button'), bg = '#000000')
 v_tracker_gui.help_button.grid(row = 3, column = 0, columnspan = 2, rowspan = 1, sticky = N+S+E+W)
-v_tracker_gui.info_button = Button(v_tracker_gui, text = "info", font = ('Arial', 16), width = 1, height = 1, fg = '#FFF00F', command = lambda: runEvent1('info_button'), bg = '#0F0F0F')
+v_tracker_gui.info_button = Button(v_tracker_gui, text = "info", font = ('Impact', 16), width = 1, height = 1, fg = '#FFF00F', command = lambda: runEvent1('info_button'), bg = '#0F0F0F')
 v_tracker_gui.info_button.grid(row = 3, column = 8, columnspan = 2, rowspan = 1, sticky = N+S+E+W)
-v_tracker_gui.ok_button = Button(v_tracker_gui, text = "ok", font = ('Arial', 16), width = 1, height = 1, fg = '#FFFFFF', command = lambda: runEvent1('ok_button'), bg = '#0000FF')
-v_tracker_gui.ok_button.grid(row = 1, column = 9, columnspan = 1, rowspan = 1, sticky = N+S+E+W)
-v_tracker_gui.add_button = Button(v_tracker_gui, text = "add", font = ('Arial', 16), width = 1, height = 1, fg = '#0000FF', command = lambda: runEvent1('add_button'), bg = '#00FFC7')
+v_tracker_gui.init_button = Button(v_tracker_gui, text = "init", font = ('Impact', 16), width = 1, height = 1, fg = '#000000', command = lambda: runEventinit('init_button'), bg = '#FFFFFF')
+v_tracker_gui.init_button.grid(row = 1, column = 8, columnspan = 2, rowspan = 1, sticky = N+S+E+W)
+v_tracker_gui.read_button = Button(v_tracker_gui, text = "read", font = ('Impact', 16), width = 1, height = 1, fg = '#AE00FF', command = lambda: runEventread('read_button'), bg = '#00FF00')
+v_tracker_gui.read_button.grid(row = 1, column = 4, columnspan = 2, rowspan = 1, sticky = N+S+E+W)
+v_tracker_gui.add_button = Button(v_tracker_gui, text = "add", font = ('Impact', 16), width = 1, height = 1, fg = '#0000FF', command = lambda: runEventadd('add_button'), bg = '#00FFC7')
 v_tracker_gui.add_button.grid(row = 1, column = 0, columnspan = 2, rowspan = 1, sticky = N+S+E+W)
-v_tracker_gui.read_button = Button(v_tracker_gui, text = "read", font = ('Arial', 16), width = 1, height = 1, fg = '#AE00FF', command = lambda: runEvent1('read_button'), bg = '#00FF00')
-v_tracker_gui.read_button.grid(row = 1, column = 3, columnspan = 2, rowspan = 1, sticky = N+S+E+W)
-v_tracker_gui.init_button = Button(v_tracker_gui, text = "init", font = ('Arial', 16), width = 1, height = 1, fg = '#000000', command = lambda: runEvent1('init_button'), bg = '#FFFFFF')
-v_tracker_gui.init_button.grid(row = 1, column = 6, columnspan = 2, rowspan = 1, sticky = N+S+E+W)
+v_tracker_gui.delete_button = Button(v_tracker_gui, text = "delete", font = ('Impact', 16), width = 1, height = 1, fg = '#00FFC7', command = lambda: runEventdelete('delete_button'), bg = '#000000')
+v_tracker_gui.delete_button.grid(row = 3, column = 4, columnspan = 2, rowspan = 1, sticky = N+S+E+W)
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~HELPER FUNCTIONS~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -100,23 +104,21 @@ def hide():
 def show():
   v_tracker_gui.deiconify()
 def hideAllWidgets():
-    v_tracker_gui.insert_text.grid_remove()
     v_tracker_gui.help_button.grid_remove()
     v_tracker_gui.info_button.grid_remove()
-    v_tracker_gui.ok_button.grid_remove()
-    v_tracker_gui.add_button.grid_remove()
-    v_tracker_gui.read_button.grid_remove()
     v_tracker_gui.init_button.grid_remove()
+    v_tracker_gui.read_button.grid_remove()
+    v_tracker_gui.add_button.grid_remove()
+    v_tracker_gui.delete_button.grid_remove()
     v_tracker_gui.result_of_option.grid_remove()
 v_tracker_gui.hideAllWidgets = hideAllWidgets
 def showAllWidgets():
-    v_tracker_gui.insert_text.grid()
     v_tracker_gui.help_button.grid()
     v_tracker_gui.info_button.grid()
-    v_tracker_gui.ok_button.grid()
-    v_tracker_gui.add_button.grid()
-    v_tracker_gui.read_button.grid()
     v_tracker_gui.init_button.grid()
+    v_tracker_gui.read_button.grid()
+    v_tracker_gui.add_button.grid()
+    v_tracker_gui.delete_button.grid()
     v_tracker_gui.result_of_option.grid()
 v_tracker_gui.showAllWidgets = showAllWidgets
 def run():
@@ -130,6 +132,12 @@ v_tracker_gui.run = run
 v_tracker_gui.hide = hide
 v_tracker_gui.show = show
 
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~CUSTOM-Code~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+from tkinter import filedialog
+
+def select_file():
+    return filedialog.askopenfilename()
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~CUSTOM-WIDGETS~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -141,10 +149,10 @@ def resize():
   if v_tracker_gui.winfo_width() != dimensions[0] or v_tracker_gui.winfo_height() != dimensions[1]:
     v_tracker_gui.help_button.config(wraplength = math.ceil(v_tracker_gui.winfo_width() * 2 / 10) + 2)
     v_tracker_gui.info_button.config(wraplength = math.ceil(v_tracker_gui.winfo_width() * 2 / 10) + 2)
-    v_tracker_gui.ok_button.config(wraplength = math.ceil(v_tracker_gui.winfo_width() * 1 / 10) + 2)
-    v_tracker_gui.add_button.config(wraplength = math.ceil(v_tracker_gui.winfo_width() * 2 / 10) + 2)
-    v_tracker_gui.read_button.config(wraplength = math.ceil(v_tracker_gui.winfo_width() * 2 / 10) + 2)
     v_tracker_gui.init_button.config(wraplength = math.ceil(v_tracker_gui.winfo_width() * 2 / 10) + 2)
+    v_tracker_gui.read_button.config(wraplength = math.ceil(v_tracker_gui.winfo_width() * 2 / 10) + 2)
+    v_tracker_gui.add_button.config(wraplength = math.ceil(v_tracker_gui.winfo_width() * 2 / 10) + 2)
+    v_tracker_gui.delete_button.config(wraplength = math.ceil(v_tracker_gui.winfo_width() * 2 / 10) + 2)
     v_tracker_gui.BackgroundImageOriginal = Image.open(r'C:/Users/Ayaansh_Joshi/Downloads/full-res-for-display.png')
     v_tracker_gui.BackgroundImageImage = ImageOps.exif_transpose(v_tracker_gui.BackgroundImageOriginal)
     v_tracker_gui.BackgroundImageImage = ImageTk.PhotoImage(v_tracker_gui.BackgroundImageImage.resize((v_tracker_gui.winfo_width(), v_tracker_gui.winfo_height()), Image.Resampling.LANCZOS))
